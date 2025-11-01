@@ -215,6 +215,13 @@ export default function Simulate() {
     setIsRecording(prev => !prev);
   }, []);
 
+  const navLinks = [
+    { to: "/", icon: "mdi:home-outline", label: "Home", glow: "bg-cyan-400/30" },
+    { to: "/simulate", icon: "fluent:brain-circuit-20-regular", label: "Simulation", glow: "bg-blue-400/30" },
+    { to: "/results", icon: "mdi:chart-line", label: "Results", glow: "bg-purple-400/30" },
+    { to: "/profile", icon: "mdi:account-outline", label: "Profile", glow: "bg-pink-400/30" },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#101b33] to-[#152540] dark font-['Inter',sans-serif]">
       {/* Optimized animated background - removed particles for better performance */}
@@ -225,85 +232,48 @@ export default function Simulate() {
         <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-purple-500/8 rounded-full blur-2xl" style={{ animation: 'pulse 4s ease-in-out infinite 2s' }} />
       </div>
 
-      <div className="relative z-10 p-6 md:p-8 -mt-4 md:-mt-6">
+      <div className="relative z-10 p-6 md:p-8 -mt-4 md:-mt-6 max-w-7xl mx-auto">
         {/* Navigation Header */}
         <div className="mb-6">
-          <header className="relative z-10 flex flex-wrap md:flex-nowrap justify-between items-center px-4 md:px-8 py-4 md:py-6 w-full mx-auto gap-3 md:gap-6">
-            <div className="flex items-center gap-3">
-              <div className="relative p-[6px] rounded-lg">
-                <div className="absolute inset-0 bg-cyan-400/5 rounded-lg blur-sm"></div>
-                <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg bg-[#0f172a]/70 flex items-center justify-center backdrop-blur-md border border-cyan-400/20">
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-white/25 to-transparent pointer-events-none" />
-                  <Icon
-                    icon="fluent:brain-circuit-48-regular"
-                    className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-[0_0_5px_rgba(255,255,255,1)]"
-                  />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-white text-xl font-semibold">MindWave</h1>
-                <p className="text-cyan-200 text-sm">EEG Brain Activity Visualization</p>
-              </div>
-            </div>
+         <header className="relative z-10 flex flex-col md:flex-row justify-between items-center px-4 md:px-8 py-4 md:py-6 w-full max-w-7xl mx-auto gap-4 md:gap-6">
+  {/* Logo */}
+  <div className="flex items-center gap-3">
+    <div className="relative p-[6px] rounded-lg">
+      <div className="absolute inset-0 bg-cyan-400/5 rounded-lg blur-sm"></div>
+      <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg bg-[#0f172a]/70 flex items-center justify-center backdrop-blur-md border border-cyan-400/20">
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-white/25 to-transparent pointer-events-none" />
+        <Icon
+          icon="fluent:brain-circuit-48-regular"
+          className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-[0_0_5px_rgba(255,255,255,1)]"
+        />
+      </div>
+    </div>
+    <div>
+      <h1 className="text-white text-xl font-semibold">MindWave</h1>
+      <p className="text-cyan-200 text-sm">EEG Brain Activity Visualization</p>
+    </div>
+  </div>
 
-            <nav className="flex items-center gap-2 md:gap-4 w-full md:w-auto mt-2 md:mt-0 justify-start md:justify-end overflow-x-auto scrollbar-none fade-edges-x snap-x snap-mandatory">
-              <Link
-                to="/"
-                className="flex items-center gap-2 px-3 py-2 md:px-5 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 transition-all group text-sm md:text-base snap-start"
-              >
-                <div className="relative w-6 h-6 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-cyan-400/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  <Icon
-                    icon="mdi:home-outline"
-                    className="w-4 h-4 md:w-5 md:h-5 text-cyan-300 group-hover:text-white transition-all duration-300"
-                  />
-                </div>
-                Home
-              </Link>
-
-              <Link
-                to="/simulate"
-                className="flex items-center gap-2 px-3 py-2 md:px-5 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 transition-all group text-sm md:text-base snap-start"
-              >
-                <div className="relative w-6 h-6 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  <Icon
-                    icon="fluent:brain-circuit-20-regular"
-                    className="w-4 h-4 md:w-5 md:h-5 text-cyan-300 group-hover:text-white transition-all duration-300"
-                  />
-                </div>
-                Simulation
-              </Link>
-
-              <Link
-                to="/results"
-                className="flex items-center gap-2 px-3 py-2 md:px-5 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 transition-all group text-sm md:text-base snap-start"
-              >
-                <div className="relative w-6 h-6 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-purple-400/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  <Icon
-                    icon="mdi:chart-line"
-                    className="w-4 h-4 md:w-5 md:h-5 text-cyan-300 group-hover:text-white transition-all duration-300"
-                  />
-                </div>
-                Results
-              </Link>
-
-              <Link
-                to="/Profile"
-                className="flex items-center gap-2 px-3 py-2 md:px-5 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 transition-all group text-sm md:text-base snap-start"
-              >
-                <div className="relative w-6 h-6 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-pink-400/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  <Icon
-                    icon="mdi:account-outline"
-                    className="w-4 h-4 md:w-5 md:h-5 text-cyan-300 group-hover:text-white transition-all duration-300"
-                  />
-                </div>
-                Profile
-              </Link>
-            </nav>
-          </header>
+  {/* Navbar */}
+  <nav className="flex items-center justify-center md:justify-end gap-2 md:gap-4 w-full md:w-auto overflow-x-auto scrollbar-none snap-x snap-mandatory">
+    {navLinks.map((link) => (
+      <Link
+        key={link.label}
+        to={link.to}
+        className="flex items-center gap-2 px-3 py-2 md:px-5 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 transition-all group text-sm md:text-base snap-start whitespace-nowrap"
+      >
+        <div className="relative w-6 h-6 flex items-center justify-center">
+          <div className={`absolute inset-0 rounded-full ${link.glow} blur-md opacity-0 group-hover:opacity-100 transition-all duration-300`} />
+          <Icon
+            icon={link.icon}
+            className="w-4 h-4 md:w-5 md:h-5 text-cyan-300 group-hover:text-white transition-all duration-300"
+          />
+        </div>
+        {link.label}
+      </Link>
+    ))}
+  </nav>
+</header>
 
           {/* Status Bar */}
           <div className="flex items-center justify-between p-4 bg-gradient-to-br from-[#1a2847]/80 to-[#1d2d50]/80 border border-cyan-400/20 backdrop-blur-xl rounded-xl shadow-xl mb-6">
